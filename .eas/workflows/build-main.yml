@@ -1,13 +1,39 @@
-name: Build Android on main
+name: Build or update Android on main
 
+# Native changes (new fingerprint) get a full APK build.
+# JS-only changes ship as an over-the-air update to existing preview builds.
 on:
   push:
     branches: ['main']
 
 jobs:
+  fingerprint:
+    name: Fingerprint
+    type: fingerprint
+    environment: preview
+
+  get_android_build:
+    name: Find a build with this fingerprint
+    needs: [fingerprint]
+    type: get-build
+    params:
+      fingerprint_hash: ${{ needs.fingerprint.outputs.android_fingerprint_hash }}
+      profile: preview
+
   build_android:
     name: Build Android APK
+    needs: [get_android_build]
+    if: ${{ !needs.get_android_build.outputs.build_id }}
     type: build
     params:
       platform: android
       profile: preview
+
+  publish_android_update:
+    name: Publish Android update
+    needs: [get_android_build]
+    if: ${{ needs.get_android_build.outputs.build_id }}
+    type: update
+    params:
+      branch: preview
+      platform: android

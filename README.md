@@ -70,7 +70,19 @@ pnpm build
 
 When the cloud build finishes, EAS prints a download link for the APK.
 
-Every push to `main` also starts this build in the cloud through the EAS workflow in `.eas/workflows/build-main.yml`. This only works while the GitHub repository is linked to the EAS project under **Project settings > GitHub** on expo.dev. You can see each run and its APK link on the project's **Workflows** page.
+## Ship updates without reinstalling
+
+Preview builds get JavaScript changes over the air through EAS Update on the `preview` channel. The app downloads an update when it starts and uses it the next time it opens.
+
+An update only reaches builds with the same native code. The app's runtime version is a fingerprint of its native code, so a change to native code, for example a new native dependency or a change to `modules/timer-engine`, needs a new APK.
+
+To publish an update by hand:
+
+```sh
+eas update --channel preview --platform android --message "Describe the change"
+```
+
+Every push to `main` runs the EAS workflow in `.eas/workflows/build-main.yml`. If a preview build with the same fingerprint exists, the workflow publishes an update. Otherwise it builds a new APK. This only works while the GitHub repository is linked to the EAS project under **Project settings > GitHub** on expo.dev. You can see each run on the project's **Workflows** page.
 
 ## Project layout
 

@@ -44,6 +44,10 @@ module.exports = {
       ['expo-build-properties', { android: androidBuildProps }],
       'expo-font',
     ],
+    runtimeVersion: { policy: 'fingerprint' },
+    updates: {
+      url: 'https://u.expo.dev/dcb3a715-7950-4966-a2d9-a4f3ce7d306e',
+    },
     experiments: {
       reactCompiler: true,
     },
