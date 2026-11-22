@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 2x1: the next timer, or the last-used duration when there is none. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@android:id/background"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@drawable/te_bg_widget"
+  android:clipToOutline="true"
+  android:gravity="center_vertical"
+  android:orientation="horizontal"
+  android:paddingStart="18dp"
+  android:paddingTop="4dp"
+  android:paddingEnd="12dp"
+  android:paddingBottom="4dp">
+
+  <LinearLayout android:id="@+id/te_open" style="@style/Te.Slot">
+
+    <TextView
+      android:id="@+id/te_label"
+      style="@style/Te.Slot.Label"
+      android:text="@string/te_sample_label" />
+
+    <FrameLayout style="@style/Te.Slot.DigitsBox">
+
+      <Chronometer
+        android:id="@+id/te_chrono"
+        style="@style/Te.Slot.Digits"
+        android:autoSizeMaxTextSize="30sp"
+        android:textSize="30sp"
+        android:visibility="gone" />
+
+      <TextView
+        android:id="@+id/te_digits"
+        style="@style/Te.Slot.Digits"
+        android:autoSizeMaxTextSize="30sp"
+        android:text="@string/te_sample_digits"
+        android:textSize="30sp" />
+    </FrameLayout>
+  </LinearLayout>
+
+  <ImageView
+    android:id="@+id/te_button"
+    style="@style/Te.RoundButton"
+    android:maxWidth="48dp"
+    android:maxHeight="48dp"
+    android:src="@drawable/te_btn_pause" />
+</LinearLayout>

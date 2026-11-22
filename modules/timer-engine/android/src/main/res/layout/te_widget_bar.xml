@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 4x1: the four one-tap presets. The numbers here are the defaults, for the preview. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@android:id/background"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@drawable/te_bg_widget"
+  android:clipToOutline="true"
+  android:orientation="horizontal"
+  android:padding="12dp">
+
+  <LinearLayout
+    android:id="@+id/te_preset1"
+    style="@style/Te.Preset">
+
+    <TextView
+      android:id="@+id/te_preset1_number"
+      style="@style/Te.Preset.Number"
+      android:autoSizeMaxTextSize="22sp"
+      android:text="1"
+      android:textSize="22sp" />
+
+    <TextView style="@style/Te.Preset.Unit" />
+  </LinearLayout>
+
+  <LinearLayout
+    android:id="@+id/te_preset2"
+    style="@style/Te.Preset"
+    android:layout_marginStart="@dimen/te_gap">
+
+    <TextView
+      android:id="@+id/te_preset2_number"
+      style="@style/Te.Preset.Number"
+      android:autoSizeMaxTextSize="22sp"
+      android:text="5"
+      android:textSize="22sp" />
+
+    <TextView style="@style/Te.Preset.Unit" />
+  </LinearLayout>
+
+  <LinearLayout
+    android:id="@+id/te_preset3"
+    style="@style/Te.Preset"
+    android:layout_marginStart="@dimen/te_gap">
+
+    <TextView
+      android:id="@+id/te_preset3_number"
+      style="@style/Te.Preset.Number"
+      android:autoSizeMaxTextSize="22sp"
+      android:text="10"
+      android:textSize="22sp" />
+
+    <TextView style="@style/Te.Preset.Unit" />
+  </LinearLayout>
+
+  <LinearLayout
+    android:id="@+id/te_preset4"
+    style="@style/Te.Preset"
+    android:layout_marginStart="@dimen/te_gap">
+
+    <TextView
+      android:id="@+id/te_preset4_number"
+      style="@style/Te.Preset.Number"
+      android:autoSizeMaxTextSize="22sp"
+      android:text="15"
+      android:textSize="22sp" />
+
+    <TextView style="@style/Te.Preset.Unit" />
+  </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <style name="Te" parent="" />
+
+  <!-- Small text: timer names, "min", "+1 more". -->
+  <style name="Te.Label">
+    <item name="android:textColor">@color/te_muted</item>
+    <item name="android:textSize">12sp</item>
+    <item name="android:fontFamily">sans-serif-medium</item>
+    <item name="android:maxLines">1</item>
+    <item name="android:ellipsize">end</item>
+    <item name="android:includeFontPadding">false</item>
+  </style>
+
+  <!--
+    Countdown digits and preset numbers. Each use sets its own textSize, taken from the design.
+    From Android 8 the text also shrinks to fit its box (values-v26), so one layout serves
+    every cell size and "1:08:42" fits where "08:42" does; each use sets that size again as
+    autoSizeMaxTextSize. Semibold, as designed, needs Android 9 (values-v28); medium before.
+  -->
+  <style name="Te.DigitsBase">
+    <item name="android:textColor">@color/te_text</item>
+    <item name="android:fontFamily">sans-serif-medium</item>
+    <item name="android:fontFeatureSettings">tnum</item>
+    <item name="android:maxLines">1</item>
+    <item name="android:includeFontPadding">false</item>
+  </style>
+
+  <style name="Te.Digits" parent="Te.DigitsBase" />
+
+  <!--
+    A timer slot is a name over digits. The two share the height 3:5 with the name resting on
+    the split and the digits hanging from it, which keeps the pair centred while letting the
+    digits shrink when the cell is short.
+  -->
+  <style name="Te.Slot">
+    <item name="android:layout_width">0dp</item>
+    <item name="android:layout_height">match_parent</item>
+    <item name="android:layout_weight">1</item>
+    <item name="android:orientation">vertical</item>
+  </style>
+
+  <style name="Te.Slot.Label" parent="Te.Label">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">0dp</item>
+    <item name="android:layout_weight">3</item>
+    <item name="android:gravity">bottom|start</item>
+  </style>
+
+  <style name="Te.Slot.DigitsBox" parent="">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">0dp</item>
+    <item name="android:layout_weight">5</item>
+    <item name="android:layout_marginTop">2dp</item>
+  </style>
+
+  <style name="Te.Slot.Digits" parent="Te.Digits">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">match_parent</item>
+    <item name="android:gravity">top|start</item>
+  </style>
+
+  <!-- A preset: number over "min", on a raised tile. -->
+  <style name="Te.Preset">
+    <item name="android:layout_width">0dp</item>
+    <item name="android:layout_height">match_parent</item>
+    <item name="android:layout_weight">1</item>
+    <item name="android:orientation">vertical</item>
+    <item name="android:background">@drawable/te_bg_raised</item>
+  </style>
+
+  <style name="Te.Preset.Number" parent="Te.Digits">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">0dp</item>
+    <item name="android:layout_weight">3</item>
+    <item name="android:gravity">bottom|center_horizontal</item>
+  </style>
+
+  <!-- "min" under a preset number. Shrinks with a short tile from Android 8 (values-v26). -->
+  <style name="Te.UnitBase" parent="Te.Label">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">0dp</item>
+    <item name="android:layout_weight">2</item>
+    <item name="android:gravity">top|center_horizontal</item>
+    <item name="android:paddingTop">2dp</item>
+    <item name="android:fontFamily">sans-serif</item>
+    <item name="android:ellipsize">none</item>
+    <item name="android:text">@string/te_min</item>
+  </style>
+
+  <style name="Te.Preset.Unit" parent="Te.UnitBase" />
+
+  <!-- A round timer button: the whole button is the image, so it shrinks with a short cell. -->
+  <style name="Te.RoundButton">
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_marginStart">@dimen/te_gap</item>
+    <item name="android:adjustViewBounds">true</item>
+    <item name="android:background">@drawable/te_ripple_round</item>
+  </style>
+</resources>

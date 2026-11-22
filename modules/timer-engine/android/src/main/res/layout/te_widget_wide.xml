@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 4x2: the next two timers on the left, four presets on the right. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@android:id/background"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@drawable/te_bg_widget"
+  android:baselineAligned="false"
+  android:clipToOutline="true"
+  android:orientation="horizontal"
+  android:padding="14dp">
+
+  <!-- The design splits the width 202 : 136 between timers and presets. -->
+  <LinearLayout
+    android:layout_width="0dp"
+    android:layout_height="match_parent"
+    android:layout_weight="202"
+    android:orientation="vertical">
+
+    <FrameLayout
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_weight="1"
+      android:background="@drawable/te_bg_tile">
+
+      <LinearLayout
+        android:id="@+id/te_row1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="14dp"
+        android:paddingEnd="10dp">
+
+        <LinearLayout android:id="@+id/te_row1_open" style="@style/Te.Slot">
+
+          <TextView
+            android:id="@+id/te_row1_label"
+            style="@style/Te.Slot.Label"
+            android:text="@string/te_sample_label" />
+
+          <FrameLayout style="@style/Te.Slot.DigitsBox">
+
+            <Chronometer
+              android:id="@+id/te_row1_chrono"
+              style="@style/Te.Slot.Digits"
+              android:autoSizeMaxTextSize="28sp"
+              android:textSize="28sp"
+              android:visibility="gone" />
+
+            <TextView
+              android:id="@+id/te_row1_digits"
+              style="@style/Te.Slot.Digits"
+              android:autoSizeMaxTextSize="28sp"
+              android:text="@string/te_sample_digits"
+              android:textColor="@color/te_text"
+              android:textSize="28sp" />
+          </FrameLayout>
+        </LinearLayout>
+
+        <ImageView
+          android:id="@+id/te_row1_button"
+          style="@style/Te.RoundButton"
+          android:maxWidth="44dp"
+          android:maxHeight="44dp"
+          android:src="@drawable/te_btn_pause" />
+      </LinearLayout>
+
+      <TextView
+        android:id="@+id/te_row1_empty"
+        style="@style/Te.Label"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:paddingStart="14dp"
+        android:paddingEnd="14dp"
+        android:text="@string/te_no_timer"
+        android:textSize="14sp"
+        android:visibility="gone" />
+    </FrameLayout>
+
+    <FrameLayout
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_weight="1"
+      android:layout_marginTop="@dimen/te_gap"
+      android:background="@drawable/te_bg_tile">
+
+      <LinearLayout
+        android:id="@+id/te_row2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="14dp"
+        android:paddingEnd="10dp">
+
+        <LinearLayout android:id="@+id/te_row2_open" style="@style/Te.Slot">
+
+          <TextView
+            android:id="@+id/te_row2_label"
+            style="@style/Te.Slot.Label"
+            android:text="@string/te_sample_label_paused" />
+
+          <FrameLayout style="@style/Te.Slot.DigitsBox">
+
+            <Chronometer
+              android:id="@+id/te_row2_chrono"
+              style="@style/Te.Slot.Digits"
+              android:autoSizeMaxTextSize="28sp"
+              android:textSize="28sp"
+              android:visibility="gone" />
+
+            <TextView
+              android:id="@+id/te_row2_digits"
+              style="@style/Te.Slot.Digits"
+              android:autoSizeMaxTextSize="28sp"
+              android:text="@string/te_sample_digits_paused"
+              android:textColor="@color/te_muted"
+              android:textSize="28sp" />
+          </FrameLayout>
+        </LinearLayout>
+
+        <ImageView
+          android:id="@+id/te_row2_button"
+          style="@style/Te.RoundButton"
+          android:maxWidth="44dp"
+          android:maxHeight="44dp"
+          android:src="@drawable/te_btn_play" />
+      </LinearLayout>
+
+      <TextView
+        android:id="@+id/te_row2_empty"
+        style="@style/Te.Label"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:paddingStart="14dp"
+        android:paddingEnd="14dp"
+        android:text="@string/te_no_timer"
+        android:textSize="14sp"
+        android:visibility="gone" />
+    </FrameLayout>
+  </LinearLayout>
+
+  <LinearLayout
+    android:layout_width="0dp"
+    android:layout_height="match_parent"
+    android:layout_marginStart="14dp"
+    android:layout_weight="136"
+    android:orientation="vertical">
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_weight="1"
+      android:baselineAligned="false"
+      android:orientation="horizontal">
+
+      <LinearLayout
+        android:id="@+id/te_preset1"
+        style="@style/Te.Preset">
+
+        <TextView
+          android:id="@+id/te_preset1_number"
+          style="@style/Te.Preset.Number"
+          android:autoSizeMaxTextSize="24sp"
+          android:text="1"
+          android:textSize="24sp" />
+
+        <TextView style="@style/Te.Preset.Unit" />
+      </LinearLayout>
+
+      <LinearLayout
+        android:id="@+id/te_preset2"
+        style="@style/Te.Preset"
+      android:layout_marginStart="@dimen/te_gap">
+
+        <TextView
+          android:id="@+id/te_preset2_number"
+          style="@style/Te.Preset.Number"
+          android:autoSizeMaxTextSize="24sp"
+          android:text="5"
+          android:textSize="24sp" />
+
+        <TextView style="@style/Te.Preset.Unit" />
+      </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_marginTop="@dimen/te_gap"
+      android:layout_weight="1"
+      android:baselineAligned="false"
+      android:orientation="horizontal">
+
+      <LinearLayout
+        android:id="@+id/te_preset3"
+        style="@style/Te.Preset">
+
+        <TextView
+          android:id="@+id/te_preset3_number"
+          style="@style/Te.Preset.Number"
+          android:autoSizeMaxTextSize="24sp"
+          android:text="10"
+          android:textSize="24sp" />
+
+        <TextView style="@style/Te.Preset.Unit" />
+      </LinearLayout>
+
+      <LinearLayout
+        android:id="@+id/te_preset4"
+        style="@style/Te.Preset"
+        android:layout_marginStart="@dimen/te_gap">
+
+        <TextView
+          android:id="@+id/te_preset4_number"
+          style="@style/Te.Preset.Number"
+          android:autoSizeMaxTextSize="24sp"
+          android:text="15"
+          android:textSize="24sp" />
+
+        <TextView style="@style/Te.Preset.Unit" />
+      </LinearLayout>
+    </LinearLayout>
+  </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <!-- Finish alert -->
+  <string name="te_channel_name">Timer finished</string>
+  <string name="te_channel_description">Shown when a timer runs out</string>
+  <string name="te_timer_finished">Timer finished</string>
+  <string name="te_action_dismiss">Dismiss</string>
+  <string name="te_action_add_minute">+1 min</string>
+  <string name="te_sound_unknown">Unknown sound</string>
+
+  <!-- Widget picker -->
+  <string name="te_widget_wide_label">Timers</string>
+  <string name="te_widget_small_label">Next timer</string>
+  <string name="te_widget_bar_label">Quick start</string>
+  <string name="te_widget_mini_label">Next timer (compact)</string>
+  <string name="te_widget_wide_description">Your next two timers and four presets</string>
+  <string name="te_widget_small_description">The next timer to finish, with pause and +1 minute</string>
+  <string name="te_widget_bar_description">Start a 1, 5, 10 or 15 minute timer</string>
+  <string name="te_widget_mini_description">The next timer to finish, in one row</string>
+
+  <!-- Widget text -->
+  <string name="te_last_used">Last used</string>
+  <string name="te_no_timer">No timer</string>
+  <string name="te_min">min</string>
+  <string name="te_plus_minute">+1m</string>
+  <string name="te_label_paused">%1$s · Paused</string>
+  <string name="te_label_done">%1$s · Done</string>
+  <string name="te_more">+%1$d more</string>
+
+  <!-- Widget content descriptions -->
+  <string name="te_cd_pause">Pause %1$s</string>
+  <string name="te_cd_resume">Resume %1$s</string>
+  <string name="te_cd_dismiss">Dismiss %1$s</string>
+  <string name="te_cd_add_minute">Add one minute to %1$s</string>
+  <string name="te_cd_start">Start a %1$s timer</string>
+  <string name="te_cd_start_minutes">Start a %1$d minute timer</string>
+
+  <!-- Sample content, shown only in the launcher's widget preview -->
+  <string name="te_sample_label" translatable="false">Pasta</string>
+  <string name="te_sample_digits" translatable="false">08:42</string>
+  <string name="te_sample_label_paused" translatable="false">Tea · Paused</string>
+  <string name="te_sample_digits_paused" translatable="false">01:04</string>
+  <string name="te_sample_more" translatable="false">+1 more</string>
+</resources>

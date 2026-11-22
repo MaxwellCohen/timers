@@ -1,0 +1,34 @@
+{
+  "name": "timers",
+  "main": "index.js",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo run:android",
+    "prebuild": "expo prebuild --platform android --clean",
+    "lint": "expo lint",
+    "typecheck": "tsc --noEmit",
+    "build": "eas build --platform android --profile preview"
+  },
+  "dependencies": {
+    "@expo-google-fonts/inter": "^0.4.2",
+    "@expo-google-fonts/space-grotesk": "^0.4.1",
+    "@expo/vector-icons": "^15.1.1",
+    "expo": "^58.0.21",
+    "expo-build-properties": "~58.0.11",
+    "expo-font": "~58.0.11",
+    "expo-splash-screen": "~58.0.12",
+    "expo-system-ui": "~58.0.7",
+    "react": "19.3.0",
+    "react-native": "0.88.1",
+    "react-native-safe-area-context": "~5.11.1"
+  },
+  "devDependencies": {
+    "@types/react": "~19.3.0",
+    "babel-preset-expo": "^58.0.22",
+    "eslint": "^9.25.0",
+    "eslint-config-expo": "~58.0.4",
+    "typescript": "~6.0.3"
+  },
+  "private": true
+}

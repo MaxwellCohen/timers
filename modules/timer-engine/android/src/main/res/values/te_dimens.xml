@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <!-- Android 12+ uses the launcher's own widget radius, see values-v31. -->
+  <dimen name="te_widget_radius">28dp</dimen>
+  <dimen name="te_tile_radius">18dp</dimen>
+  <dimen name="te_pill_radius">22dp</dimen>
+  <dimen name="te_gap">8dp</dimen>
+</resources>

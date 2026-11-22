@@ -1,0 +1,115 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <!-- Exact alarms: a timer app qualifies for USE_EXACT_ALARM (Android 13+, not revocable). -->
+  <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
+  <uses-permission
+    android:name="android.permission.SCHEDULE_EXACT_ALARM"
+    android:maxSdkVersion="32" />
+  <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+  <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+  <uses-permission android:name="android.permission.VIBRATE" />
+
+  <!--
+    Ringing is done by a foreground service. "systemExempted" is the type Android 14+ defines
+    for apps that hold an exact-alarm permission and continue an alarm in the background.
+  -->
+  <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+  <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SYSTEM_EXEMPTED" />
+  <!-- Held while ringing, so "play once" and the ten-minute limit end on time. -->
+  <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+  <application>
+
+    <!-- Alarms, widget buttons, notification buttons. Reached only by our own PendingIntents. -->
+    <receiver
+      android:name="expo.modules.timerengine.TimerActionReceiver"
+      android:exported="false" />
+
+    <!-- Plays the alarm for finished timers. Started by the engine only. -->
+    <service
+      android:name="expo.modules.timerengine.TimerRingService"
+      android:exported="false"
+      android:foregroundServiceType="systemExempted" />
+
+    <!-- System broadcasts only; the system can deliver to a receiver that is not exported. -->
+    <receiver
+      android:name="expo.modules.timerengine.TimerBootReceiver"
+      android:exported="false">
+      <intent-filter>
+        <action android:name="android.intent.action.BOOT_COMPLETED" />
+        <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+        <action android:name="android.intent.action.TIME_SET" />
+        <action android:name="android.app.action.SCHEDULE_EXACT_ALARM_PERMISSION_STATE_CHANGED" />
+      </intent-filter>
+    </receiver>
+
+    <!--
+      "Set a timer for 10 minutes". No UI and a task of its own, so that a request with
+      SKIP_UI does not drag the app's task to the front. A new task per request
+      (documentLaunchMode): otherwise a second request arriving while the first is still
+      starting the process is merged into it by the system and lost.
+    -->
+    <activity
+      android:name="expo.modules.timerengine.SetTimerActivity"
+      android:documentLaunchMode="always"
+      android:excludeFromRecents="true"
+      android:exported="true"
+      android:noHistory="true"
+      android:permission="com.android.alarm.permission.SET_ALARM"
+      android:taskAffinity=""
+      android:theme="@android:style/Theme.NoDisplay">
+      <intent-filter>
+        <action android:name="android.intent.action.SET_TIMER" />
+        <category android:name="android.intent.category.DEFAULT" />
+      </intent-filter>
+    </activity>
+
+    <receiver
+      android:name="expo.modules.timerengine.WideWidgetProvider"
+      android:exported="false"
+      android:label="@string/te_widget_wide_label">
+      <intent-filter>
+        <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+      </intent-filter>
+      <meta-data
+        android:name="android.appwidget.provider"
+        android:resource="@xml/te_widget_wide_info" />
+    </receiver>
+
+    <receiver
+      android:name="expo.modules.timerengine.SmallWidgetProvider"
+      android:exported="false"
+      android:label="@string/te_widget_small_label">
+      <intent-filter>
+        <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+      </intent-filter>
+      <meta-data
+        android:name="android.appwidget.provider"
+        android:resource="@xml/te_widget_small_info" />
+    </receiver>
+
+    <receiver
+      android:name="expo.modules.timerengine.BarWidgetProvider"
+      android:exported="false"
+      android:label="@string/te_widget_bar_label">
+      <intent-filter>
+        <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+      </intent-filter>
+      <meta-data
+        android:name="android.appwidget.provider"
+        android:resource="@xml/te_widget_bar_info" />
+    </receiver>
+
+    <receiver
+      android:name="expo.modules.timerengine.MiniWidgetProvider"
+      android:exported="false"
+      android:label="@string/te_widget_mini_label">
+      <intent-filter>
+        <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+      </intent-filter>
+      <meta-data
+        android:name="android.appwidget.provider"
+        android:resource="@xml/te_widget_mini_info" />
+    </receiver>
+  </application>
+</manifest>

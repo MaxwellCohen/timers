@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <color name="te_widget_bg">#181B1F</color>
+  <color name="te_tile">#0E1012</color>
+  <color name="te_raised">#22262C</color>
+  <color name="te_text">#F3F5F6</color>
+  <color name="te_muted">#A3ACB5</color>
+  <color name="te_accent">#5B9DFF</color>
+  <color name="te_on_accent">#04142E</color>
+  <color name="te_done">#FF9B54</color>
+  <color name="te_ripple">#33FFFFFF</color>
+  <color name="te_ripple_on_accent">#3304142E</color>
+</resources>

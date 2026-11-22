@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <style name="Te.Digits" parent="Te.DigitsBase">
+    <item name="android:autoSizeTextType">uniform</item>
+    <item name="android:autoSizeMinTextSize">10sp</item>
+    <item name="android:autoSizeStepGranularity">1sp</item>
+  </style>
+
+  <style name="Te.Preset.Unit" parent="Te.UnitBase">
+    <item name="android:autoSizeTextType">uniform</item>
+    <item name="android:autoSizeMinTextSize">8sp</item>
+    <item name="android:autoSizeMaxTextSize">12sp</item>
+    <item name="android:autoSizeStepGranularity">1sp</item>
+  </style>
+</resources>
