@@ -46,11 +46,14 @@ internal object TimerWidgets {
     }
   }
 
-  /** Done first (newest), then running by soonest end, then paused (newest). */
+  /**
+   * Running first by soonest end, so a finished timer hands its slot to the next one to end.
+   * Then done (newest), then paused (newest).
+   */
   fun displayOrder(timers: List<Timer>): List<Timer> {
     val byState = timers.groupBy { it.state }
-    return byState[TimerState.DONE].orEmpty().sortedByDescending { it.createdAt } +
-      byState[TimerState.RUNNING].orEmpty().sortedBy { it.endAt } +
+    return byState[TimerState.RUNNING].orEmpty().sortedBy { it.endAt } +
+      byState[TimerState.DONE].orEmpty().sortedByDescending { it.createdAt } +
       byState[TimerState.PAUSED].orEmpty().sortedByDescending { it.createdAt }
   }
 
